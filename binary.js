@@ -20,4 +20,14 @@ function binary(target, array) {
     return result;
 }
 
-module.exports = binary;
+function chop(array) {
+    let length = array.length;
+    let isEven = length % 2 === 0;
+    let chopAtIndex = isEven ? length / 2 : Math.floor(length / 2)
+    let chunk1 = array.slice(0, chopAtIndex);
+    let chunk2 = array.slice(chopAtIndex, array.length);
+    console.log(chunk1, chunk2);
+    return [chunk1, chunk2];
+}
+
+module.exports = { binary, chop };

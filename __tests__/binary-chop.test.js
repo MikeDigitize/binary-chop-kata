@@ -1,4 +1,4 @@
-const binary = require('../binary');
+const { binary, chop } = require('../binary');
 
 describe('A binary chop kata', function() {
     it('should return -1 when the array does not contain the target', function () {
@@ -38,3 +38,12 @@ describe('A binary chop kata', function() {
         expect(result).toBe(1);
     });
 });
+describe('the chop', function() {
+    it('should chop an array with an even amount of items into two of equal length', function() {
+        const result = chop([0,1]);
+        expect(result[0]).toHaveLength(1);
+        expect(result[0][0]).toBe(0);
+        expect(result[1]).toHaveLength(1);
+        expect(result[1][0]).toBe(1);
+    });
+})
