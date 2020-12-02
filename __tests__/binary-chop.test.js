@@ -100,7 +100,7 @@ describe('search first half of array tests', function() {
         expect(searchHalf(target, array)).toBe(-1);
     });
 });
-describe('search half again tests', function() {
+describe('search half again tests - should find index relative to chop behavior', function() {
     it('should find a target in the array', function() {
         const target = 1;
         const array = [0,1,2,3];
@@ -162,5 +162,25 @@ describe('binary chop tests', function() {
         const target = 111;
         const array = [9,3,6,11,2,7,8,1,89,0,111,21,32];
         expect(binaryChop(target, array)).toBe(10);
+    });
+    it('should find a target in the array', function() {
+        const target = true;
+        const array = [9,true,3,6,11,2,7,8,1,89,0,111,21,32];
+        expect(binaryChop(target, array)).toBe(1);
+    });
+    it('should not find a target in the array', function() {
+        const target = 22;
+        const array = [9,3,6,11,2,7,8,1,89,0,111,21,32];
+        expect(binaryChop(target, array)).toBe(-1);
+    });
+    it('should not find a target in the array', function() {
+        const target = 4;
+        const array = [9,3,6,11,2,7,8,1,89,0,111,21,32];
+        expect(binaryChop(target, array)).toBe(-1);
+    });
+    it('should not find a target in the array', function() {
+        const target = false;
+        const array = [9,3,6,11,2,7,8,true,1,89,0,111,21,32];
+        expect(binaryChop(target, array)).toBe(-1);
     });
 });

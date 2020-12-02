@@ -48,6 +48,9 @@ function binaryChop(target, array) {
             numberOfItemsChecked += halved[0].length;
             return searchArray(halved[1]);
         }
+        if(result === -1) {
+            numberOfItemsChecked = 0;
+        }
         return result;
     }
     return searchArray(array) + numberOfItemsChecked;
