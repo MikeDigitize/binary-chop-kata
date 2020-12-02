@@ -11,7 +11,6 @@
  */
 
 /**
- * if the length is greater than 1
  * chop in half and search the first half
  * if the search target is found the index can be returned
  * if not found the length of the first half is stored (-1) to add to the index when found
@@ -33,7 +32,7 @@ function binary(target, array) {
 function chop(array) {
   let length = array.length;
   let isEven = length % 2 === 0;
-  let chopAtIndex = isEven ? length / 2 : Math.floor(length / 2);
+  let chopAtIndex = length === 1 ? 1 : isEven ? length / 2 : Math.floor(length / 2);
   let chunk1 = array.slice(0, chopAtIndex);
   let chunk2 = array.slice(chopAtIndex, array.length);
   return [chunk1, chunk2];

@@ -72,4 +72,9 @@ describe('the chop', function() {
         expect(result[0]).toHaveLength(5);
         expect(result[1]).toHaveLength(6);
     });
+    it('should handle an array of length 1', function() {
+        const result = chop([0]);
+        expect(result[0]).toHaveLength(1);
+        expect(result[1]).toHaveLength(0);
+    });
 });
