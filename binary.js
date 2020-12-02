@@ -12,6 +12,14 @@
 
 function binary(target, array) {
     let result = -1;
+    /**
+     * if the length is greater than 1
+     * chop in half and search the first half
+     * if the search target is found the index can be returned
+     * if not found the length of the first half is stored (-1) to add to the index when found
+     * and the process goes round again
+     * if the target is found the index is added to the accumulated length
+     */
     for(let i = 0; i < array.length; i++) {
         if(array[i] === target) {
             result = i;
