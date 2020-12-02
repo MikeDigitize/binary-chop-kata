@@ -1,4 +1,4 @@
-const { binary, chop } = require('../binary');
+const { binary, chop, searchHalf, searchHalfAgain } = require('../binary');
 
 describe('A binary chop kata', function() {
     it('should return -1 when the array does not contain the target', function () {
@@ -76,5 +76,69 @@ describe('the chop', function() {
         const result = chop([0]);
         expect(result[0]).toHaveLength(1);
         expect(result[1]).toHaveLength(0);
+    });
+});
+describe('search first half of array tests', function() {
+    it('should find a target in the first half of the array', function() {
+        const target = 1;
+        const array = [0,1,2,3];
+        expect(searchHalf(target, array)).toBe(1);
+    });
+    it('should find a target in the first half of the array', function() {
+        const target = 3;
+        const array = [0,1,2,3,4,5,6,7,8,9];
+        expect(searchHalf(target, array)).toBe(3);
+    });
+    it('should not find a target in the second half of the array', function() {
+        const target = 2;
+        const array = [0,1,2,3];
+        expect(searchHalf(target, array)).toBe(-1);
+    });
+    it('should not find a target in the second half of the array', function() {
+        const target = 9;
+        const array = [0,1,2,3,4,5,6,7,8,9];
+        expect(searchHalf(target, array)).toBe(-1);
+    });
+});
+describe('search half again tests', function() {
+    it('should find a target in the array', function() {
+        const target = 1;
+        const array = [0,1,2,3];
+        expect(searchHalfAgain(target, array)).toBe(1);
+    });
+    it('should find a target in the array', function() {
+        const target = 3;
+        const array = [0,1,2,3,4,5,6,7,8,9];
+        expect(searchHalfAgain(target, array)).toBe(3);
+    });
+    it('should find a target in the array', function() {
+        const target = 5;
+        const array = [0,1,2,3,4,5,6,7,8,9];
+        expect(searchHalfAgain(target, array)).toBe(0);
+    });
+    it('should find a target in the array', function() {
+        const target = 6;
+        const array = [0,1,2,3,4,5,6,7,8,9];
+        expect(searchHalfAgain(target, array)).toBe(1);
+    });
+    it('should find a target in the array', function() {
+        const target = 7;
+        const array = [0,1,2,3,4,5,6,7,8,9];
+        expect(searchHalfAgain(target, array)).toBe(0);
+    });
+    it('should find a target in the array', function() {
+        const target = 8;
+        const array = [0,1,2,3,4,5,6,7,8,9];
+        expect(searchHalfAgain(target, array)).toBe(0);
+    });
+    it('should find a target in the array', function() {
+        const target = 9;
+        const array = [0,1,2,3,4,5,6,7,8,9];
+        expect(searchHalfAgain(target, array)).toBe(0);
+    });
+    it('should not find a target in the array', function() {
+        const target = 10;
+        const array = [0,1,2,3,4,5,6,7,8,9];
+        expect(searchHalfAgain(target, array)).toBe(-1);
     });
 });

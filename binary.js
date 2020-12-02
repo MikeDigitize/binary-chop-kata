@@ -29,6 +29,26 @@ function binary(target, array) {
   return result;
 }
 
+function searchHalfAgain(target, array) {
+    let halved = chop(array);
+    let result = binary(target, halved[0]);
+    if(result === -1 && halved[1].length > 0) {
+        return searchHalfAgain(target, halved[1]);
+    }
+    return result;
+}
+
+function searchHalf(target, array) {
+    let halved = chop(array);
+    let result = -1;
+    for (let i = 0; i < halved[0].length; i++) {
+        if (halved[0][i] === target) {
+            result = i;
+        }
+    }
+    return result;
+}
+
 function chop(array) {
   let length = array.length;
   let isEven = length % 2 === 0;
@@ -38,4 +58,4 @@ function chop(array) {
   return [chunk1, chunk2];
 }
 
-module.exports = { binary, chop };
+module.exports = { binary, chop, searchHalf, searchHalfAgain };
