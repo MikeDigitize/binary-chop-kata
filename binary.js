@@ -38,6 +38,21 @@ function searchHalfAgain(target, array) {
     return result;
 }
 
+function binaryChop(target, array) {
+    let result = -1;
+    let numberOfItemsChecked = 0;
+    function searchArray(_array) {
+        let halved = chop(_array);
+        result = binary(target, halved[0]);
+        if(result === -1 && halved[1].length > 0) {
+            numberOfItemsChecked += halved[0].length;
+            return searchArray(halved[1]);
+        }
+        return result;
+    }
+    return searchArray(array) + numberOfItemsChecked;
+}
+
 function searchHalf(target, array) {
     let halved = chop(array);
     let result = -1;
@@ -58,4 +73,4 @@ function chop(array) {
   return [chunk1, chunk2];
 }
 
-module.exports = { binary, chop, searchHalf, searchHalfAgain };
+module.exports = { binary, chop, searchHalf, searchHalfAgain, binaryChop };
