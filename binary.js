@@ -34,7 +34,6 @@ function chop(array) {
     let chopAtIndex = isEven ? length / 2 : Math.floor(length / 2)
     let chunk1 = array.slice(0, chopAtIndex);
     let chunk2 = array.slice(chopAtIndex, array.length);
-    console.log(chunk1, chunk2);
     return [chunk1, chunk2];
 }
 

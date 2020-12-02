@@ -37,6 +37,12 @@ describe('A binary chop kata', function() {
         const result = binary(target, array)
         expect(result).toBe(1);
     });
+    it('should return the index when the array does contain the target', function () {
+        const target = 4;
+        const array = [1,'a',2,'b',3,true,4,false];
+        const result = binary(target, array)
+        expect(result).toBe(6);
+    });
 });
 describe('the chop', function() {
     it('should chop an array with an even amount of items into two of equal length', function() {
@@ -66,4 +72,4 @@ describe('the chop', function() {
         expect(result[0]).toHaveLength(5);
         expect(result[1]).toHaveLength(6);
     });
-})
+});
