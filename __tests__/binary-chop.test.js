@@ -205,4 +205,14 @@ describe('sorted binary chop tests', function() {
         const array = [0,1,2,3,4,5,6,7,8,9].reverse();
         expect(binaryChopSortedList(target, array)).toBe(9);
     });
+    it('should not find a target in the array', function() {
+        const target = 22;
+        const array = [9,3,6,11,2,7,8,1,89,0,111,21,32];
+        expect(binaryChopSortedList(target, array)).toBe(-1);
+    });
+    it('should not find a target in the array', function() {
+        const target = 4;
+        const array = [9,3,6,11,2,7,8,1,89,0,111,21,32];
+        expect(binaryChopSortedList(target, array)).toBe(-1);
+    });
 });

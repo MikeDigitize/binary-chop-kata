@@ -106,13 +106,16 @@ function binaryChopSortedList(target, array) {
   function searchArray(_array) {
     let halved = chop(_array);
     /**
-     * if the last item of halved[0] > target
+     * if the last item of halved[0] < target
      * search again with halved[1]
      */
-    if(halved[0][halved.length - 1] < target) {
+    console.log(halved[0], target);
+    if(halved[0][halved[0].length - 1] < target) {
+      console.log('search again');
       numberOfItemsChecked += halved[0].length;
       return searchArray(halved[1]);
     }
+    console.log('searched');
     result = binary(target, halved[0]);
     if (result === -1 && halved[1].length > 0) {
       numberOfItemsChecked += halved[0].length;
