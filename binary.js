@@ -23,7 +23,7 @@ function binary(target, array) {
 }
 
 /**
- * create function to chop an array in 2 with the behaviour of - 
+ * create function to chop an array in 2 with the behaviour of -
  * if it's an odd number of items
  * the first half is one smaller than the second
  * if it's an array of length 1 the second array is empty
@@ -97,6 +97,40 @@ function binaryChop(target, array) {
     return result;
   }
   return searchArray(array) + numberOfItemsChecked;
+} 
+
+function binaryChopSortedList(target, array) {
+  let result = -1;
+  let numberOfItemsChecked = 0;
+  let sortedArray = array.sort((a,b) => a - b);
+  function searchArray(_array) {
+    let halved = chop(_array);
+    /**
+     * if the last item of halved[0] > target
+     * search again with halved[1]
+     */
+    if(halved[0][halved.length - 1] < target) {
+      numberOfItemsChecked += halved[0].length;
+      return searchArray(halved[1]);
+    }
+    result = binary(target, halved[0]);
+    if (result === -1 && halved[1].length > 0) {
+      numberOfItemsChecked += halved[0].length;
+      return searchArray(halved[1]);
+    }
+    if (result === -1) {
+      numberOfItemsChecked = 0;
+    }
+    return result;
+  }
+  return searchArray(sortedArray) + numberOfItemsChecked;
 }
 
-module.exports = { binary, chop, searchHalf, searchHalfAgain, binaryChop };
+module.exports = {
+  binary,
+  chop,
+  searchHalf,
+  searchHalfAgain,
+  binaryChop,
+  binaryChopSortedList,
+};
