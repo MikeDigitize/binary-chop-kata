@@ -1,4 +1,4 @@
-const { binary, chop, searchHalf, searchHalfAgain, binaryChop } = require('../binary');
+const { binary, chop, searchHalf, searchHalfAgain, binaryChop, binaryChopSortedList } = require('../binary');
 
 describe('A binary chop kata', function() {
     it('should return -1 when the array does not contain the target', function () {
@@ -182,5 +182,27 @@ describe('binary chop tests', function() {
         const target = false;
         const array = [9,3,6,11,2,7,8,true,1,89,0,111,21,32];
         expect(binaryChop(target, array)).toBe(-1);
+    });
+});
+describe('sorted binary chop tests', function() {
+    it('should find a target in the array', function() {
+        const target = 1;
+        const array = [0,1,2,3];
+        expect(binaryChopSortedList(target, array)).toBe(1);
+    });
+    it('should find a target in the array', function() {
+        const target = 3;
+        const array = [0,1,2,3,4,5,6,7,8,9];
+        expect(binaryChopSortedList(target, array)).toBe(3);
+    });
+    it('should find a target in the array', function() {
+        const target = 9;
+        const array = [0,1,2,3,4,5,6,7,8,9];
+        expect(binaryChopSortedList(target, array)).toBe(9);
+    });
+    it('should find a target in the array', function() {
+        const target = 9;
+        const array = [0,1,2,3,4,5,6,7,8,9].reverse();
+        expect(binaryChopSortedList(target, array)).toBe(9);
     });
 });
